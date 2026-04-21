@@ -1,4 +1,3 @@
-import 'package:al_in_one/features/authentication/screens/onboarding.dart';
 import 'package:al_in_one/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:al_in_one/utils/theme/theme.dart';

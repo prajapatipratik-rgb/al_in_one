@@ -19,7 +19,7 @@ class AuthenticationRespository extends GetxController {
   }
 
   /// Functions to Show Relevant Screen
-  screenRedirect() async {
+  Future<void> screenRedirect() async {
     // Local Storage
     if (kDebugMode) {
       print('========== GET STORRAGE Auth Repo ==========');
