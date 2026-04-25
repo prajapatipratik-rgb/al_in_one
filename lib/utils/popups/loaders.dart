@@ -7,10 +7,10 @@ import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class TLoaders {
-  static hideSnackBar() =>
+  static void hideSnackBar() =>
       ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();
 
-  static customToast({required String message}) {
+  static void customToast({required String message}) {
     ScaffoldMessenger.of(Get.context!).showSnackBar(
       SnackBar(
         elevation: 0,
@@ -36,7 +36,7 @@ class TLoaders {
     );
   }
 
-  static successSnackBar({
+  static void successSnackBar({
     required String title,
     String message = '',
     int duration = 3,
@@ -55,7 +55,7 @@ class TLoaders {
     );
   }
 
-  static warningSnackBar({required String title, String message = ''}) {
+  static void warningSnackBar({required String title, String message = ''}) {
     Get.snackbar(
       title,
       message,
@@ -70,7 +70,7 @@ class TLoaders {
     );
   }
 
-  static errorSnackBar({required String title, String message = ''}) {
+  static void errorSnackBar({required String title, String message = ''}) {
     Get.snackbar(
       title,
       message,

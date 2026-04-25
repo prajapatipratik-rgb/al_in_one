@@ -27,11 +27,17 @@ class TFullScreenLoader {
               : TColors.white,
           width: double.infinity,
           height: double.infinity,
-          child: Column(
-            children: [
-              const SizedBox(height: 250), // Adjust the spacing as needed
-              TAnimationLoaderWidget(text: text, animation: animation),
-            ],
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxHeight: 800),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TAnimationLoaderWidget(text: text, animation: animation),
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -40,7 +46,7 @@ class TFullScreenLoader {
 
   /// stop the currently open loading dialog
   /// This method doesnt return anything
-  static stoploading() {
+  static void stoploading() {
     Navigator.of(Get.overlayContext!).pop();
 
     /// Close the dialog using the Mavigator
