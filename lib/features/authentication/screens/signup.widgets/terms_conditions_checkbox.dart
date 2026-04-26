@@ -6,7 +6,6 @@ import 'package:al_in_one/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
-import 'package:get_storage/get_storage.dart';
 
 class TTermsAndConditionCheckbox extends StatelessWidget {
   const TTermsAndConditionCheckbox({

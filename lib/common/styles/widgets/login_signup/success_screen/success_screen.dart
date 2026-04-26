@@ -1,18 +1,18 @@
 import 'package:al_in_one/common/styles/spacing_styles.dart';
 import 'package:al_in_one/utils/constants/sizes.dart';
 import 'package:al_in_one/utils/constants/text_strings.dart';
-import 'package:al_in_one/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
-class SucessScreen extends StatelessWidget {
-  const SucessScreen(
+class SuccessScreen extends StatelessWidget {
+  const SuccessScreen(
       {super.key,
       required this.image,
       required this.title,
-      required this.subtitle,
+      required this.subTitle,
       required this.onPressed});
 
-  final String image, title, subtitle;
+  final String image, title, subTitle;
   final VoidCallback onPressed;
 
   @override
@@ -23,35 +23,31 @@ class SucessScreen extends StatelessWidget {
           padding: TSpacingStyle.paddingWithAppBarHeight * 2,
           child: Column(
             children: [
-              //Image
-              Image(
-                image: AssetImage(image),
-                width: THelperFunctions.screenWidth() * 0.6,
-              ),
+              /// Image
+              Lottie.asset(image,
+                  width: MediaQuery.of(context).size.width * 0.6),
               const SizedBox(height: TSizes.spacedBtwSections),
 
-              //Title and Subtitle
+              /// Title & SubTitle
               Text(title,
                   style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center),
-              const SizedBox(height: TSizes.defaultSpace),
+              const SizedBox(height: TSizes.spaceBtwItems),
+              Text(subTitle,
+                  style: Theme.of(context).textTheme.labelMedium,
+                  textAlign: TextAlign.center),
+              const SizedBox(height: TSizes.spacedBtwSections),
 
-              Text(
-                subtitle,
-                style: Theme.of(context).textTheme.labelMedium,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: TSizes.defaultSpace),
-
-              // Buttons
+              /// Buttons
               SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      onPressed: onPressed, child: Text(TTexts.tContinue))),
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: onPressed, child: const Text(TTexts.tContinue)),
+              ),
             ],
-          ),
-        ),
-      ),
+          ), // Column
+        ), // Padding
+      ), // SingleChildScrollView
     );
   }
 }

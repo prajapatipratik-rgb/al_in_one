@@ -6,10 +6,8 @@ import 'package:al_in_one/utils/constants/image_strings.dart';
 import 'package:al_in_one/utils/network_manager/network_manager.dart';
 import 'package:al_in_one/utils/popups/full_screen_loader.dart';
 import 'package:al_in_one/utils/popups/loaders.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
@@ -34,8 +32,7 @@ class SignupController extends GetxController {
     try {
       /// Start Loading
       TFullScreenLoader.openLoadingDialog(
-          'We are processing your information...',
-          TImages.loadingJuggleAnimation);
+          'We are processing your information...', TImages.docerAnimation);
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -90,7 +87,7 @@ class SignupController extends GetxController {
           message: 'Your account has been created! Verify email to continue');
 
       // Move to Verify Email Screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       // Remove Loader
       TFullScreenLoader.stoploading();

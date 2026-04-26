@@ -159,46 +159,37 @@ class TImages {
       "assets/icons/payment_methods/successful_payment_icon.png";
 
   // Lottie Animations (JSON)
-
-  static const String emptyFileAnimation =
-      'assets/images/animations/53207-empty-file.json';
-  static const String securityIconTransparentAnimation =
-      'assets/images/animations/67263-security-icon-transparent.json';
-  static const String checkRegisterAnimation =
-      'assets/images/animations/72462-check-register.json';
-  static const String searchingAnimation =
-      'assets/images/animations/72785-searching.json';
-  static const String packagingInProgressAnimation =
-      'assets/images/animations/98783-packaging-in-progress.json';
-  static const String thankYouAnimation =
-      'assets/images/animations/104368-thank-you.json';
-  static const String paperPlaneAnimation =
-      'assets/images/animations/110052-paper-plane.json';
-  static const String paymentSuccessfulAnimation =
-      'assets/images/animations/120978-payment-successful.json';
-  static const String lottieCarRidesAnimation =
-      'assets/images/animations/136491-animation-lottie-car-rides.json';
-  static const String pencilDrawingAnimation =
-      'assets/images/animations/140429-pencil-drawing.json';
-  static const String loadingJuggleAnimation =
-      'assets/images/animations/141397-loading-juggle.json';
-  static const String animationOfDocerAnimation =
-      'assets/images/animations/141594-animation-of-docer.json';
-
-  /// These filenames contain `%20` (keep exactly same as filename).
-  static const String animation201734020174401 =
-      'assets/images/animations/Animation%20-%201734020174401.json';
-  static const String animation201735396019850 =
-      'assets/images/animations/Animation%20-%201735396019850.json';
-  static const String animation201745236705111 =
-      'assets/images/animations/Animation%20-%201745236705111.json';
-
-  static const String cloudUploadingAnimation =
-      'assets/images/animations/cloud-uploading-animation.json';
-  static const String ladyAddingProductInCartAnimation =
-      'assets/images/animations/lady-adding-product-in-cart-animation.json';
-  static const String loaderAnimation =
-      'assets/images/animations/loader-animation.json';
-  static const String orderCompleteCarDeliveryAnimation =
-      'assets/images/animations/order-complete-car-delivery-animation.json';
+// -- Lottie Animations
+  static String cartAnimation =
+      "assets/images/animations/lady-adding-product-in-cart-animation.json";
+  static String orderCompletedAnimation =
+      "assets/images/animations/order-complete-car-delivery-animation.json";
+  static String packageAnimation =
+      "assets/images/animations/87083-packaging-in-progress.json";
+  static String paperPlaneAnimation =
+      "assets/images/animations/110052-paper-plane.json";
+  static String carAnimation =
+      "assets/images/animations/136491-animation-lottie-car.json";
+  static String pencilAnimation =
+      "assets/images/animations/140429-pencil-drawing.json";
+  static String docerAnimation =
+      "assets/images/animations/141594-animation-of-docer.json";
+  static String searchAnimation =
+      "assets/images/animations/72785-searching.json";
+  static String emptyAnimation =
+      "assets/images/animations/72785-searching.json";
+  static String securityAnimation =
+      "assets/images/animations/67263-security-icon-transparent.json";
+  static String successfullyRegisterAnimation =
+      "assets/images/animations/72462-check-register.json";
+  static String thankYouAnimation =
+      "assets/images/animations/104368-thank-you.json";
+  static String paymentSuccessfulAnimation =
+      "assets/images/animations/120978-payment-successful.json";
+  static String loadingJuggleAnimation =
+      "assets/images/animations/141397-loading-juggle.json";
+  static String cloudUploadingAnimation =
+      "assets/images/animations/cloud-uploading-animation.json";
+  static String loaderAnimation =
+      "assets/images/animations/loader-animation.json";
 }

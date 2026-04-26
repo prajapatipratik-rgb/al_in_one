@@ -1,10 +1,11 @@
-import 'package:al_in_one/common/Authentication/firebase_authentication_exception.dart';
-import 'package:al_in_one/common/Authentication/firebase_exception.dart';
-import 'package:al_in_one/common/Authentication/format_exception.dart';
+import 'package:al_in_one/features/authentication/screens/signup.widgets/verify_email.dart';
+import 'package:al_in_one/navigation_menu.dart';
+import 'package:al_in_one/utils/exceptions/firebase_authentication_exception.dart';
+import 'package:al_in_one/utils/exceptions/firebase_exception.dart';
+import 'package:al_in_one/utils/exceptions/format_exception.dart';
 import 'package:al_in_one/features/authentication/screens/Login/login.dart';
 import 'package:al_in_one/features/authentication/screens/onboarding.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -25,26 +26,27 @@ class AuthenticationRespository extends GetxController {
   }
 
   /// Functions to Show Relevant Screen
-  Future<void> screenRedirect() async {
-    // Local Storage
-    if (kDebugMode) {
-      print('========== GET STORRAGE Auth Repo ==========');
-      print(deviceStorage.read('IsFirstTime'));
+  screenRedirect() async {
+    final user = _auth.currentUser;
+    if (user != null) {
+      if (user.emailVerified) {
+        Get.offAll(() => const NavigationMenu());
+      } else {
+        Get.offAll(() => VerifyEmailScreen(
+              email: _auth.currentUser?.email,
+            ));
+      }
+    } else {
+      deviceStorage.writeIfNull('IsFirstTime', true);
+      deviceStorage.read('IsFirstTime') != true
+          ? Get.offAll(() => const LoginScreen())
+          : Get.offAll(() => const OnBoardingScreen());
     }
-    deviceStorage.writeIfNull('IsFirstTime', true);
-    deviceStorage.read('IsFirstTime') != true
-        ? Get.offAll(() =>
-            const LoginScreen()) // Redirect to Login Screen if not the first time
-        : Get.offAll(
-            const OnBoardingScreen()); // Redirect to OnBoarding Screen if it's the first time
   }
 
-/* ----------- Email & Password sign-in-------------*/
+  /* ----------- Email & Password sign-in -------------*/
 
-// [EmailAuthentication] - SignIn
-
-// [EmailAuthentication] - REGISTER
-
+  // [EmailAuthentication] - REGISTER
   Future<UserCredential> registerWithEmailAndPassword(
       String email, String password) async {
     try {
@@ -62,4 +64,39 @@ class AuthenticationRespository extends GetxController {
       throw 'Something went wrong. Please try again';
     }
   }
-}
+
+  /// [EmailVerification] - MAIL VERIFICATION
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// [LogoutUser] - Valid for any authentication.
+  Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(() => const LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+} // ← class properly closed here
