@@ -1,7 +1,5 @@
-import 'package:al_in_one/common/styles/widgets/login_signup/success_screen/success_screen.dart';
 import 'package:al_in_one/data/repositories/authentication/authentication_repository.dart';
 import 'package:al_in_one/features/authentication/controllers.onboarding/signup/verify_email_controller.dart';
-import 'package:al_in_one/features/authentication/screens/Login/login.dart';
 import 'package:al_in_one/utils/constants/image_strings.dart';
 import 'package:al_in_one/utils/constants/sizes.dart';
 import 'package:al_in_one/utils/constants/text_strings.dart';
@@ -9,8 +7,6 @@ import 'package:al_in_one/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key, this.email});

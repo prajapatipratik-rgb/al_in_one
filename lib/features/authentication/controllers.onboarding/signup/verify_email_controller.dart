@@ -5,7 +5,6 @@ import 'package:al_in_one/utils/constants/text_strings.dart';
 import 'package:al_in_one/utils/popups/loaders.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'dart:async';
 
 class VerifyEmailController extends GetxController {
@@ -20,7 +19,7 @@ class VerifyEmailController extends GetxController {
   }
 
   /// Send Email Verification Link
-  sendEmailVerification() async {
+  Future<void> sendEmailVerification() async {
     try {
       await AuthenticationRespository.instance.sendEmailVerification();
       TLoaders.successSnackBar(
@@ -32,7 +31,7 @@ class VerifyEmailController extends GetxController {
   }
 
   /// Timer to automatically redirect on Email Verification
-  setTimerAutoRedirect() {
+  void setTimerAutoRedirect() {
     Timer.periodic(const Duration(seconds: 1), (timer) async {
       await FirebaseAuth.instance.currentUser?.reload();
       final user = FirebaseAuth.instance.currentUser;
@@ -52,7 +51,7 @@ class VerifyEmailController extends GetxController {
   }
 
   /// Manually Check if Email Verified
-  checkEmailVerificationStatus() async {
+  Future<void> checkEmailVerificationStatus() async {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
       Get.off(() => SuccessScreen(

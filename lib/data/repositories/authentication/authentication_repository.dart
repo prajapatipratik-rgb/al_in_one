@@ -26,7 +26,7 @@ class AuthenticationRespository extends GetxController {
   }
 
   /// Functions to Show Relevant Screen
-  screenRedirect() async {
+  Future<void> screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
