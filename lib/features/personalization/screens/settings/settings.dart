@@ -3,6 +3,7 @@ import 'package:al_in_one/common/styles/widgets/custom_shapes/containers/primary
 import 'package:al_in_one/common/styles/widgets/layouts/list_tile/settings_menu_tile.dart';
 import 'package:al_in_one/common/styles/widgets/layouts/list_tile/user_profile_tile.dart';
 import 'package:al_in_one/common/styles/widgets/texts/section_heading.dart';
+import 'package:al_in_one/data/repositories/authentication/authentication_repository.dart';
 import 'package:al_in_one/features/personalization/screens/address/addresses.dart';
 import 'package:al_in_one/features/personalization/screens/profile/profile.dart';
 import 'package:al_in_one/features/shop/screens/order/order.dart';
@@ -131,8 +132,10 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   SizedBox(
                     width: double.infinity,
-                    child:
-                        OutlinedButton(onPressed: () {}, child: Text('Logout')),
+                    child: OutlinedButton(
+                        onPressed: () =>
+                            AuthenticationRespository.instance.logout(),
+                        child: Text('Logout')),
                   ),
                   const SizedBox(
                     height: TSizes.spacedBtwSections,
