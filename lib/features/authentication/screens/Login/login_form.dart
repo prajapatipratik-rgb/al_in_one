@@ -1,15 +1,11 @@
 import 'package:al_in_one/features/authentication/controllers.onboarding/login/login_controller.dart';
 import 'package:al_in_one/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:al_in_one/features/authentication/screens/signup.widgets/signup.dart';
-import 'package:al_in_one/navigation_menu.dart';
 import 'package:al_in_one/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:al_in_one/utils/constants/text_strings.dart';
 import 'package:al_in_one/utils/constants/sizes.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class TLoginForm extends StatelessWidget {
