@@ -1,6 +1,7 @@
 import 'package:al_in_one/utils/exceptions/firebase_exception.dart';
 import 'package:al_in_one/utils/exceptions/format_exception.dart';
 import 'package:al_in_one/features/authentication/models/user_model.dart';
+import 'package:al_in_one/utils/exceptions/platform_exception.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
